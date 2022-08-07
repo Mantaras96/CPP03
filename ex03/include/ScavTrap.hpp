@@ -1,9 +1,9 @@
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
 
-#include "ClapTrap.hpp";
+#include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap 
+class ScavTrap: virtual public ClapTrap 
 {
     public:
         ScavTrap(const std::string name);
@@ -16,7 +16,6 @@ class ScavTrap: public ClapTrap
         void guardGate();
 
         private:
-
             ScavTrap( void );
 };
 
