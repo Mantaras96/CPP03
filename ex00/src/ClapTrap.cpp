@@ -31,11 +31,11 @@
         }
     };
     void ClapTrap::takeDamage(unsigned int amount){
-        std::cout << "ClapTrap receive " << amount << " damage." << std::endl;
         this->energyPoints = this->energyPoints - amount;
         if (this->energyPoints < 0) {
             this->energyPoints = 0;
         }
+        std::cout << "ClapTrap receive " << amount << " damage." << ". Actual life points:" << this->energyPoints << std::endl;
     };
     void ClapTrap::beRepaired(unsigned int amount){
         if (this->energyPoints == 0 || this->hitPoints == 0){
@@ -43,7 +43,7 @@
         } else {
             this->energyPoints = this->energyPoints + amount;
             this->energyPoints > 10 ? this->energyPoints = 10 : this->energyPoints;
-            std::cout << "ClapTrap " << this->name << " repairs: " << amount << std::endl;
+            std::cout << "ClapTrap " << this->name << " repairs: " << amount << ". Actual life points:" << this->energyPoints << std::endl;
         }
     };
 
