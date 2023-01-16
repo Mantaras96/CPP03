@@ -1,43 +1,43 @@
-
-# SIMPLE ===================================================================================
 NAME = ClapTrap
-# ==========================================================================================
 
-# SRCS =====================================================================================
-SRCS_DIR = ./src/
-SRCS =		main.cpp \
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = include
+
+SRC =		main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
 			FragTrap.cpp
-# ==========================================================================================
+ 
+HEADER = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 
-# FLAGS ====================================================================================
-FLAGS = -Wall -Wextra -Werror
-# ==========================================================================================
+SRC := $(SRC:%=$(SRC_DIR)/%)
+OBJS = ${SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o}
+DEP = ${OBJS:.o=.d}
+HEADER := $(HEADER:%=$(INC_DIR)/%)
 
-# OBJS =====================================================================================
-OBJS_DIR 	= 	objects/
-OBJ 		= 	$(SRCS:.cpp=.o)
-OBJS 		= 	$(addprefix $(OBJS_DIR), $(OBJ))
-# ==========================================================================================
 
-# FROM SUBJECT =============================================================================
-$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
-	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling: $<"
-	@clang++ $(FLAGS) -c $< -o $@
+CC = c++
+CFLAG = -Wall -Wextra -Werror -std=c++98 -MMD
+RM = rm -rf
 
-$(NAME): $(OBJS)
-	@clang++ $(FLAGS) -o $(NAME) $(OBJS)
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp
+	@mkdir -p ${OBJ_DIR}
+	$(CC) $(CFLAG) -c $< -o $@
 
-all: $(NAME)
+${NAME}:	${OBJS}
+			${CC} ${CFLAG} ${SRC} -o ${NAME}
+
+all:		${NAME}
+
+-include ${DEP}
 
 clean:
-	@echo "Cleaning: $(OBJS_DIR)"
-	@rm -rf $(OBJS_DIR)
+			@${RM} ${OBJ_DIR}
 
-fclean: clean
-	@echo "Cleaning: $(NAME)"
-	@rm -f $(NAME)
+fclean:		clean
+			@${RM} ${NAME} ${NAME}.d
 
-re: fclean all
+re:			fclean all
+
+.PHONY: all clean fclean re

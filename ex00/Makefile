@@ -7,7 +7,7 @@ INC_DIR = include
 SRC =		main.cpp \
 			ClapTrap.cpp \
 
-HEADER = Fixed.hpp
+HEADER = ClapTrap.hpp
 
 SRC := $(SRC:%=$(SRC_DIR)/%)
 OBJS = ${SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o}
