@@ -7,6 +7,7 @@
 class FragTrap: public ClapTrap 
 {
     public:
+        FragTrap(void);
         FragTrap(const std::string name);
         ~FragTrap(void);
         FragTrap(FragTrap const &another);
@@ -15,10 +16,6 @@ class FragTrap: public ClapTrap
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
         void highFivesGuys();
-
-        private:
-
-            FragTrap( void );
 };
 
 #endif

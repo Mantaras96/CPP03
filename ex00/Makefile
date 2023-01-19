@@ -19,7 +19,7 @@ CC = c++
 CFLAG = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -rf
 
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp  Makefile
 	@mkdir -p ${OBJ_DIR}
 	$(CC) $(CFLAG) -c $< -o $@
 

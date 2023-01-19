@@ -2,18 +2,18 @@
 #include "../include/ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap(): ClapTrap()
 {
-    std::cout << "Default Constructor Called" << std::endl;
+    std::cout << "ScavTrap: Default Constructor Called" << std::endl;
     this->name = "ScavTrap default";
     this->hitPoints = 100;
     this->energyPoints = 50;
     this->attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
-    std::cout << "Constructor Called" << std::endl;
+    std::cout << "Scavtrap: Constructor Called" << std::endl;
     this->name = name;
     this->hitPoints = 10;
     this->energyPoints = 10;

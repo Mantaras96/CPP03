@@ -1,7 +1,15 @@
 
 #include "../include/ScavTrap.hpp"
 
-    ScavTrap::ScavTrap(const std::string name) {
+    ScavTrap::ScavTrap(): ClapTrap() {
+        std::cout << "ScavTrap constructor called" << std::endl;
+        this->name = "ScavTrap default";
+        this->hitPoints = 100;
+        this->energyPoints = 50;
+        this->attackDamage = 20;
+    }
+
+    ScavTrap::ScavTrap(const std::string name): ClapTrap(name) {
         std::cout << "ScavTrap constructor called" << std::endl;
         this->name = name;
         this->hitPoints = 100;

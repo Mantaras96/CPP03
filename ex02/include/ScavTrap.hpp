@@ -7,6 +7,7 @@
 class ScavTrap: public ClapTrap 
 {
     public:
+        ScavTrap(void);
         ScavTrap(const std::string name);
         ~ScavTrap(void);
         ScavTrap(ScavTrap const &another);
@@ -15,10 +16,6 @@ class ScavTrap: public ClapTrap
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
         void guardGate();
-
-        private:
-
-            ScavTrap( void );
 };
 
 #endif
