@@ -3,8 +3,11 @@
 
 int	main( void )
 {
-	ClapTrap cl4ptp("cl4ptp");
 
 	ScavTrap st("ScavTr4p");
+
+	st.attack("Persona");
+	st.beRepaired(100);
+	st.takeDamage(5);
 	st.guardGate();
 }

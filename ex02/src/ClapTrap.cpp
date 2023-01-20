@@ -80,7 +80,6 @@ void ClapTrap::beRepaired(unsigned int amount){
     } else {
         std::cout << "ClapTrap have life: " << this->hitPoints << std::endl;
         this->hitPoints = this->hitPoints + amount;
-        this->hitPoints > 10 ? this->hitPoints = 10 : this->hitPoints;
         this->energyPoints = this->energyPoints - 1;
         std::cout << "ClapTrap " << this->name << " repairs: " << amount << ". Actual life points:" << this->hitPoints << std::endl;
     }

@@ -56,33 +56,31 @@ int ClapTrap::getHealth() const
     return this->hitPoints;
 }
 
+void ClapTrap::attack(const std::string& target){
+    if (this->energyPoints == 0 || this->hitPoints == 0){
+        std::cout << "ClapTrap dont have energy points or is dead." << std::endl;
+    } else {
+        std::cout << "ClapTrap " << this->name << " attacks " << target <<", causing " << this->attackDamage  << "points of damage!" << std::endl;
+        this->energyPoints = this->energyPoints - 1;
+    }
+};
 
-    void ClapTrap::attack(const std::string& target){
-        if (this->energyPoints == 0 || this->hitPoints == 0){
-            std::cout << "ClapTrap dont have energy points or is dead." << std::endl;
-        } else {
-            std::cout << "ClapTrap " << this->name << " attacks " << target <<", causing " << this->attackDamage  << "points of damage!" << std::endl;
-            this->energyPoints = this->energyPoints - 1;
-        }
-    };
-    void ClapTrap::takeDamage(unsigned int amount){
-        std::cout << "Take dmg: ClapTrap have life: " << this->hitPoints << std::endl;
-        this->hitPoints = this->hitPoints - amount;
-        if (this->hitPoints < 0) {
-            this->hitPoints = 0;
-        }
-        std::cout << "Take dmg ClapTrap receive: " << amount << " damage." << ". Actual life points:" << this->hitPoints << std::endl;
-    };
+void ClapTrap::takeDamage(unsigned int amount){
+    std::cout << "Take dmg: ClapTrap have life: " << this->hitPoints << std::endl;
+    this->hitPoints = this->hitPoints - amount;
+    if (this->hitPoints < 0) {
+        this->hitPoints = 0;
+    }
+    std::cout << "Take dmg ClapTrap receive: " << amount << " damage." << ". Actual life points:" << this->hitPoints << std::endl;
+};
 
-    void ClapTrap::beRepaired(unsigned int amount){
-        if (this->energyPoints == 0 || this->hitPoints == 0){
-            std::cout << "ClapTrap can\'t do nothing" << std::endl;
-        } else {
-            std::cout << "ClapTrap have life: " << this->hitPoints << std::endl;
-            this->hitPoints = this->hitPoints + amount;
-            this->hitPoints > 10 ? this->hitPoints = 10 : this->hitPoints;
-            this->energyPoints = this->energyPoints - 1;
-            std::cout << "ClapTrap " << this->name << " repairs: " << amount << ". Actual life points:" << this->hitPoints << std::endl;
-        }
-    };
-
+void ClapTrap::beRepaired(unsigned int amount){
+    if (this->energyPoints == 0 || this->hitPoints == 0){
+        std::cout << "ClapTrap can\'t do nothing" << std::endl;
+    } else {
+        std::cout << "ClapTrap have life: " << this->hitPoints << std::endl;
+        this->hitPoints = this->hitPoints + amount;
+        this->energyPoints = this->energyPoints - 1;
+        std::cout << "ClapTrap " << this->name << " repairs: " << amount << ". Actual life points:" << this->hitPoints << std::endl;
+    }
+};
