@@ -29,36 +29,6 @@ FragTrap &FragTrap::operator=(const FragTrap &other){
     return(*this);
 }
 
-void FragTrap::attack(const std::string& target){
-    if (this->energyPoints == 0 || this->hitPoints == 0){
-        std::cout << "FragTrap dont have energy points or is dead." << std::endl;
-    } else {
-        std::cout << "FragTrap " << this->name << " attacks " << target <<", causing " << this->attackDamage  << "points of damage!" << std::endl;
-        this->energyPoints = this->energyPoints - 1;
-    }
-};
-
-void FragTrap::takeDamage(unsigned int amount){
-    std::cout << "Take dmg: FragTrap have life: " << this->hitPoints << std::endl;
-    this->hitPoints = this->hitPoints - amount;
-    if (this->hitPoints < 0) {
-        this->hitPoints = 0;
-    }
-    std::cout << "Take dmg FragTrap receive: " << amount << " damage." << ". Actual life points:" << this->hitPoints << std::endl;
-};
-
-void FragTrap::beRepaired(unsigned int amount){
-    if (this->energyPoints == 0 || this->hitPoints == 0){
-        std::cout << "FragTrap can\'t do nothing" << std::endl;
-    } else {
-        std::cout << "FragTrap have life: " << this->hitPoints << std::endl;
-        this->hitPoints = this->hitPoints + amount;
-        this->hitPoints > 10 ? this->hitPoints = 10 : this->hitPoints;
-        this->energyPoints = this->energyPoints - 1;
-        std::cout << "FragTrap " << this->name << " repairs: " << amount << ". Actual life points:" << this->hitPoints << std::endl;
-    }
-};
-
 void FragTrap::highFivesGuys(){
     std::cout << "I want high five guys!!" << std::endl;
 }
